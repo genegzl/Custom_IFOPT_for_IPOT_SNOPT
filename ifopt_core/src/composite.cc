@@ -55,7 +55,7 @@ std::string Component::GetName() const
   return name_;
 }
 
-void Component::Print(double tol, int& index) const
+void Component::Print(double tol, int& index) 
 {
   // calculate squared bound violation
   VectorXd x      = GetValues();
@@ -118,7 +118,7 @@ const Component::Ptr Composite::GetComponent(std::string name) const
   return Component::Ptr();
 }
 
-Composite::VectorXd Composite::GetValues() const
+Composite::VectorXd Composite::GetValues() 
 {
   VectorXd g_all = VectorXd::Zero(GetRows());
 

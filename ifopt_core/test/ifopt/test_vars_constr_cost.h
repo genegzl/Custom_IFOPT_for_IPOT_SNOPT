@@ -81,7 +81,7 @@ class ExVariables : public VariableSet {
 
   // Here is the reverse transformation from the internal representation to
   // to the Eigen::Vector
-  VectorXd GetValues() const override { return Vector2d(x0_, x1_); };
+  VectorXd GetValues() override { return Vector2d(x0_, x1_); };
 
   // Each variable has an upper and lower bound set here
   VecBound GetBounds() const override
@@ -105,7 +105,7 @@ class ExConstraint : public ConstraintSet {
   ExConstraint(const std::string& name) : ConstraintSet(1, name) {}
 
   // The constraint value minus the constant value "1", moved to bounds.
-  VectorXd GetValues() const override
+  VectorXd GetValues() override
   {
     VectorXd g(GetRows());
     Vector2d x = GetVariables()->GetComponent("var_set1")->GetValues();
@@ -151,7 +151,7 @@ class ExCost : public CostTerm {
   ExCost() : ExCost("cost_term1") {}
   ExCost(const std::string& name) : CostTerm(name) {}
 
-  double GetCost() const override
+  double GetCost() override
   {
     Vector2d x = GetVariables()->GetComponent("var_set1")->GetValues();
     return -std::pow(x(1) - 2, 2);

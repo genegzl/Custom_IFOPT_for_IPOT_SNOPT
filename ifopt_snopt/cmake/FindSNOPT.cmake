@@ -19,12 +19,18 @@
 
 
 set(SNOPT_DIR $ENV{SNOPT_DIR})
-set(snopt_v76 FALSE) # set true if snopt version >= v7.6
+set(SNOPT_v76 TRUE) # set true if snopt version >= v7.6
+# set(snopt_v76 FALSE) # set true if snopt version >= v7.6
 
-if(IS_DIRECTORY ${SNOPT_DIR}/include)
-  set(SNOPT_INCLUDE_DIRS "${SNOPT_DIR}/include")
-  set(SNOPT_LIBRARIES    "${SNOPT_DIR}/lib/libsnopt7_cpp.so;"
-                         "${SNOPT_DIR}/lib/libsnopt7.so")
+# if(IS_DIRECTORY ${SNOPT_DIR}/include)
+#   set(SNOPT_INCLUDE_DIRS "${SNOPT_DIR}/include")
+#   set(SNOPT_LIBRARIES    "${SNOPT_DIR}/lib/libsnopt7_cpp.so;"
+#                          "${SNOPT_DIR}/lib/libsnopt7.so")
+#   message(STATUS "SNOPT headers found at:  \"" ${SNOPT_INCLUDE_DIRS} "\" ")
+
+  if(IS_DIRECTORY ${SNOPT_DIR})
+  set(SNOPT_INCLUDE_DIRS "${SNOPT_DIR}")
+  set(SNOPT_LIBRARIES    "${SNOPT_DIR}/libsnopt7_cpp.so")
   message(STATUS "SNOPT headers found at:  \"" ${SNOPT_INCLUDE_DIRS} "\" ")
                                               
 else()

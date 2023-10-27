@@ -88,7 +88,7 @@ class Component {
    * @li For Constraint this represents the constraint value g.
    * @li For Cost this represents the cost value.
    */
-  virtual VectorXd GetValues() const = 0;
+  virtual VectorXd GetValues() = 0;
 
   /**
    * @brief  Returns the "bounds" of this component.
@@ -131,7 +131,7 @@ class Component {
    * @param tolerance  When to flag constraint/bound violation.
    * @param index_start  Of this specific variables-, constraint- or cost set.
    */
-  virtual void Print(double tolerance, int& index_start) const;
+  virtual void Print(double tolerance, int& index_start);
 
   /**
    * @brief Sets the number of rows of this component.
@@ -174,7 +174,7 @@ class Composite : public Component {
   virtual ~Composite() = default;
 
   // see Component for documentation
-  VectorXd GetValues() const override;
+  VectorXd GetValues() override;
   Jacobian GetJacobian() const override;
   VecBound GetBounds() const override;
   void SetVariables(const VectorXd& x) override;

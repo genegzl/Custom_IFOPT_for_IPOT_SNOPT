@@ -81,7 +81,7 @@ void ConstraintSet::LinkWithVariables(const VariablesPtr& x)
 
 CostTerm::CostTerm(const std::string& name) : ConstraintSet(1, name) {}
 
-CostTerm::VectorXd CostTerm::GetValues() const
+CostTerm::VectorXd CostTerm::GetValues() 
 {
   VectorXd cost(1);
   cost(0) = GetCost();
@@ -93,7 +93,7 @@ CostTerm::VecBound CostTerm::GetBounds() const
   return VecBound(GetRows(), NoBound);
 }
 
-void CostTerm::Print(double tol, int& index) const
+void CostTerm::Print(double tol, int& index) 
 {
   // only one scalar cost value
   double cost = GetValues()(0);

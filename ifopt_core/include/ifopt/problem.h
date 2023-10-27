@@ -257,7 +257,7 @@ class Problem {
    * @brief Read access to the costs composite
    * @return A const reference to costs_
    */
-  const Composite& GetCosts() const { return costs_; };
+  const Composite& GetCosts() { return costs_; };
 
   /**
    * @brief Read access to the history of iterations

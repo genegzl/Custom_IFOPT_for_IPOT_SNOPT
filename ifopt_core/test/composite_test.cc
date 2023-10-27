@@ -36,7 +36,7 @@ class ExComponent : public Component {
  public:
   ExComponent(int n_var, const std::string& name) : Component(n_var, name){};
 
-  virtual VectorXd GetValues() const
+  virtual VectorXd GetValues()
   {
     throw std::runtime_error("not implemented");
   };

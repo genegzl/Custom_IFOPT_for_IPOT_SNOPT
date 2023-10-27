@@ -52,13 +52,13 @@ class CostTerm : public ConstraintSet {
   /**
    * @brief  Returns the scalar cost term calculated from the @c variables.
    */
-  virtual double GetCost() const = 0;
+  virtual double GetCost() = 0;
 
  public:
   /**
    * @brief  Wrapper function that converts double to Eigen::VectorXd.
    */
-  VectorXd GetValues() const final;
+  VectorXd GetValues() final;
 
   /**
    * @brief  Returns infinite bounds (e.g. no bounds).
@@ -68,7 +68,7 @@ class CostTerm : public ConstraintSet {
   /**
    * Cost term printout slightly different from variables/constraints.
    */
-  void Print(double tol, int& index) const final;
+  void Print(double tol, int& index) final;
 };
 
 }  // namespace ifopt

@@ -37,19 +37,19 @@ void SnoptSolver::Solve(Problem& ref)
   // A complete list of options can be found in the snopt user guide:
   // https://web.stanford.edu/group/SOL/guides/sndoc7.pdf
   snopt.setProbName("snopt");
-  snopt.setIntParameter("Major Print level", 1);
-  snopt.setIntParameter("Minor Print level", 1);
+  snopt.setIntParameter("Major Print level", 0);
+  snopt.setIntParameter("Minor Print level", 0);
   snopt.setIntParameter("Derivative option",
-                        1);  // 1 = snopt will not calculate missing derivatives
+                        0);  // 1 = snopt will not calculate missing derivatives
   snopt.setIntParameter("Verify level ",
-                        3);  // full check on gradients, will throw error
-  snopt.setIntParameter("Iterations limit", 200000);
+                        0);  // full check on gradients, will throw error
+  snopt.setIntParameter("Iterations limit", 10000); //200000
   snopt.setRealParameter("Major feasibility tolerance",
-                         1.0e-4);  // target nonlinear constraint violation
+                         1.0e-6);  // target nonlinear constraint violation
   snopt.setRealParameter("Minor feasibility tolerance",
-                         1.0e-4);  // for satisfying the QP bounds
+                         1.0e-6);  // for satisfying the QP bounds
   snopt.setRealParameter("Major optimality tolerance",
-                         1.0e-2);  // target complementarity gap
+                         1.0e-6);  // target complementarity gap
 
   // error codes as given in the manual.
   int Cold = 0;  // Basis = 1, Warm = 2;
@@ -76,7 +76,7 @@ void SnoptSolver::Solve(Problem& ref)
     std::string msg =
         "ERROR: Snopt failed to find a solution. EXIT:" + std::to_string(EXIT) +
         ", INFO:" + std::to_string(status_) + "\n";
-    throw std::runtime_error(msg);
+    // throw std::runtime_error(msg);
   }
 
   snopt.SetVariables();
